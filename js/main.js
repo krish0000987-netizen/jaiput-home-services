@@ -1,6 +1,6 @@
 /**
  * JAIPUR HOME SERVICE 93 - MASTER JAVASCRIPT ENGINE
- * Unobstructed 3-Second Hero Slideshow, Quick Service Booking & WhatsApp Dispatch
+ * Mobile-First, Unobstructed 3-Second Hero Slideshow & WhatsApp Dispatch
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,18 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
    1. HERO SLIDESHOW (3-SECOND AUTO TRANSITION ENGINE)
    ========================================================================== */
 const heroSlideServices = [
-  { tag: "01 / 07", title: "Complete Home Deep Cleaning" },
-  { tag: "02 / 07", title: "Sofa & Carpet Spa Shampooing" },
+  { tag: "01 / 07", title: "Home Deep Cleaning" },
+  { tag: "02 / 07", title: "Sofa & Carpet Spa" },
   { tag: "03 / 07", title: "Stone Polish & Marble Rubbing" },
-  { tag: "04 / 07", title: "Bathroom Deep Sanitization" },
-  { tag: "05 / 07", title: "Modular Kitchen Degreasing" },
-  { tag: "06 / 07", title: "AC Service & Gas Refilling" },
-  { tag: "07 / 07", title: "Royale House Painting" }
+  { tag: "04 / 07", title: "Bathroom Deep Cleaning" },
+  { tag: "05 / 07", title: "Kitchen Deep Degreasing" },
+  { tag: "06 / 07", title: "AC Service & Repairing" },
+  { tag: "07 / 07", title: "House Painting Service" }
 ];
 
 let fullSlideIndex = 0;
 let fullSlideInterval = null;
-const FULL_SLIDE_DURATION = 3000; // 3 seconds requirement
+const FULL_SLIDE_DURATION = 3000;
 
 function initFullBleedHeroSlider() {
   const slides = document.querySelectorAll('#heroFullSlider .hero-full-slide');
@@ -51,29 +51,29 @@ function initFullBleedHeroSlider() {
       slide.classList.toggle('active', idx === index);
     });
 
-    // Update dots & reset 3s progress bar animation
+    // Update dots
     dots.forEach((dot, idx) => {
       dot.classList.toggle('active', idx === index);
       const progress = dot.querySelector('.dot-progress');
       if (progress) {
         progress.style.animation = 'none';
-        void progress.offsetWidth; // trigger reflow
+        void progress.offsetWidth;
         if (idx === index) {
           progress.style.animation = `slideTimer ${FULL_SLIDE_DURATION}ms linear forwards`;
         }
       }
     });
 
-    // Smooth transition for active service label
+    // Update service badge smoothly
     if (serviceTag && serviceTitle && heroSlideServices[index]) {
       serviceTag.textContent = heroSlideServices[index].tag;
       serviceTitle.style.opacity = '0';
 
       setTimeout(() => {
         serviceTitle.textContent = heroSlideServices[index].title;
-        serviceTitle.style.transition = 'all 0.25s ease';
+        serviceTitle.style.transition = 'opacity 0.2s ease';
         serviceTitle.style.opacity = '1';
-      }, 100);
+      }, 80);
     }
   }
 
@@ -97,7 +97,6 @@ function initFullBleedHeroSlider() {
     }
   }
 
-  // Controls
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
       nextSlide();
@@ -119,13 +118,7 @@ function initFullBleedHeroSlider() {
     });
   });
 
-  // Pause on hover
-  if (heroSection) {
-    heroSection.addEventListener('mouseenter', stopAutoPlay);
-    heroSection.addEventListener('mouseleave', startAutoPlay);
-  }
-
-  // Mobile Touch Swipe Support
+  // Mobile Touch Swipe
   let touchStartX = 0;
   let touchEndX = 0;
   if (heroSection) {
@@ -135,17 +128,16 @@ function initFullBleedHeroSlider() {
 
     heroSection.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
-      if (touchStartX - touchEndX > 45) {
+      if (touchStartX - touchEndX > 40) {
         nextSlide();
         startAutoPlay();
-      } else if (touchEndX - touchStartX > 45) {
+      } else if (touchEndX - touchStartX > 40) {
         prevSlide();
         startAutoPlay();
       }
     }, { passive: true });
   }
 
-  // Start with Slide 0
   showSlide(0);
   startAutoPlay();
 }
@@ -156,7 +148,7 @@ function initFullBleedHeroSlider() {
 function initStickyHeader() {
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
@@ -193,7 +185,7 @@ function initMobileMenu() {
 }
 
 /* ==========================================================================
-   3. QUICK SERVICE BOOKING SECTION DISPATCH
+   3. QUICK SERVICE BOOKING DISPATCH
    ========================================================================== */
 function initBookingDateDefaults() {
   const dateInput = document.getElementById('bookDate');
@@ -228,20 +220,20 @@ function handleSectionQuickBooking(e) {
 }
 
 /* ==========================================================================
-   4. BEFORE & AFTER COMPARISON SLIDER ENGINE
+   4. BEFORE & AFTER SLIDER
    ========================================================================== */
 const baData = {
   marble: {
-    before: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80',
-    after: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80'
+    before: 'images/ba-marble-before.jpg',
+    after: 'images/ba-marble-after.jpg'
   },
   sofa: {
-    before: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=1200&q=80',
-    after: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80'
+    before: 'images/service-sofa-clean.jpg',
+    after: 'images/hero-sofa-cleaning.jpg'
   },
   bathroom: {
-    before: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80',
-    after: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'
+    before: 'images/service-bathroom-clean.jpg',
+    after: 'images/hero-bathroom-cleaning.jpg'
   }
 };
 
@@ -264,7 +256,6 @@ function initBeforeAfterSlider() {
     handle.style.left = `${percent}%`;
   }
 
-  // Mouse Events
   container.addEventListener('mousedown', (e) => {
     isDragging = true;
     setPosition(e.clientX);
@@ -279,7 +270,6 @@ function initBeforeAfterSlider() {
     isDragging = false;
   });
 
-  // Touch Events
   container.addEventListener('touchstart', (e) => {
     isDragging = true;
     setPosition(e.touches[0].clientX);
@@ -318,7 +308,7 @@ function switchBATab(key) {
 }
 
 /* ==========================================================================
-   5. STATS COUNTER ANIMATION
+   5. STATS COUNTER
    ========================================================================== */
 function initCounterAnimations() {
   const counters = document.querySelectorAll('.counter');
@@ -327,7 +317,7 @@ function initCounterAnimations() {
   function runCounters() {
     counters.forEach(counter => {
       const target = +counter.getAttribute('data-target');
-      const duration = 2000;
+      const duration = 1800;
       const stepTime = 30;
       const steps = duration / stepTime;
       const increment = target / steps;
@@ -364,7 +354,7 @@ function initCounterAnimations() {
         runCounters();
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.2 });
 
   const statsSection = document.querySelector('.stats-strip-section');
   if (statsSection) observer.observe(statsSection);
@@ -391,12 +381,12 @@ function toggleFaq(header) {
     body.style.maxHeight = null;
   } else {
     item.classList.add('active');
-    body.style.maxHeight = `${body.scrollHeight + 30}px`;
+    body.style.maxHeight = `${body.scrollHeight + 20}px`;
   }
 }
 
 /* ==========================================================================
-   7. MODAL POPUP & FORM SUBMISSIONS
+   7. MODAL POPUP & ACTIONS
    ========================================================================== */
 function openBookingModal(serviceName) {
   const modal = document.getElementById('bookingModal');
@@ -419,7 +409,6 @@ function closeBookingModal() {
   if (modal) modal.classList.remove('active');
 }
 
-// Close on outside click
 window.addEventListener('click', (e) => {
   const modal = document.getElementById('bookingModal');
   if (e.target === modal) {
@@ -446,7 +435,7 @@ function handleModalSubmit(e) {
 }
 
 /* ==========================================================================
-   8. SCROLL TO TOP UTILITY
+   8. SCROLL TO TOP
    ========================================================================== */
 function initScrollTop() {
   const btn = document.getElementById('scrollTopBtn');
