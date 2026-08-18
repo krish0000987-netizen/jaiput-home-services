@@ -415,6 +415,14 @@ h1, h2, h3, h4, h5, h6 {
   object-position: center;
 }
 
+.img-pos-center {
+  object-position: center center !important;
+}
+
+.img-pos-top {
+  object-position: center 22% !important;
+}
+
 /* Subtle Gradient for Bottom Contrast */
 .hero-full-overlay {
   position: absolute;
