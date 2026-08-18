@@ -1,5 +1,5 @@
 /* ==========================================================================
-   JAIPUR HOME SERVICE 93 - LUXURY MOBILE-PERFECT STYLESHEET
+   JAIPUR HOME SERVICE - LUXURY MOBILE-PERFECT STYLESHEET
    100% Mobile Optimized, Zero Text Overflow, Bulletproof Clip-Path B&A Engine
    ========================================================================== */
 
@@ -1628,3 +1628,86 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   RAKHI OFFER POPUP MODAL STYLES
+   ========================================================================== */
+.rakhi-modal-content {
+  background: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: modalScaleUp 0.3s ease-out;
+}
+
+@keyframes modalScaleUp {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.rakhi-lang-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.rakhi-toggle-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: var(--primary-navy);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rakhi-toggle-btn.active {
+  background: var(--primary-gold);
+  border-color: var(--primary-gold);
+  color: var(--primary-navy);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.rakhi-toggle-btn:hover {
+  background: #e2e8f0;
+}
+
+.rakhi-toggle-btn.active:hover {
+  background: var(--primary-gold);
+}
+
+.rakhi-offer-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+.rakhi-whatsapp-btn {
+  width: 100%;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(37, 211, 102, 0.2);
+}
+

@@ -1,5 +1,5 @@
 /**
- * JAIPUR HOME SERVICE 93 - MASTER JAVASCRIPT ENGINE
+ * JAIPUR HOME SERVICE - MASTER JAVASCRIPT ENGINE
  * Mobile-First, Slideshow Navigation Arrows, Authentic Before/After Slider & WhatsApp Dispatch
  */
 
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounterAnimations();
   initBookingDateDefaults();
   initScrollTop();
+  initRakhiPopup();
 });
 
 /* ==========================================================================
@@ -216,7 +217,7 @@ function handleSectionQuickBooking(e) {
   const slot = document.getElementById('bookSlot').value;
   const notes = document.getElementById('bookNotes').value.trim();
 
-  const text = `*NEW SERVICE BOOKING - JAIPUR HOME SERVICE 93*%0A%0A` +
+  const text = `*NEW SERVICE BOOKING - JAIPUR HOME SERVICE*%0A%0A` +
     `*Customer Name:* ${encodeURIComponent(name)}%0A` +
     `*Mobile Number:* ${encodeURIComponent(mobile)}%0A` +
     `*Service Requested:* ${encodeURIComponent(service)}%0A` +
@@ -423,9 +424,13 @@ function closeBookingModal() {
 }
 
 window.addEventListener('click', (e) => {
-  const modal = document.getElementById('bookingModal');
-  if (e.target === modal) {
+  const bookingModal = document.getElementById('bookingModal');
+  if (e.target === bookingModal) {
     closeBookingModal();
+  }
+  const rakhiModal = document.getElementById('rakhiModal');
+  if (e.target === rakhiModal) {
+    closeRakhiModal();
   }
 });
 
@@ -436,7 +441,7 @@ function handleModalSubmit(e) {
   const service = document.getElementById('modalService').value;
   const address = document.getElementById('modalAddress').value.trim();
 
-  const text = `*SERVICE BOOKING REQUEST - JAIPUR HOME SERVICE 93*%0A%0A` +
+  const text = `*SERVICE BOOKING REQUEST - JAIPUR HOME SERVICE*%0A%0A` +
     `*Name:* ${encodeURIComponent(name)}%0A` +
     `*Mobile:* ${encodeURIComponent(phone)}%0A` +
     `*Service:* ${encodeURIComponent(service)}%0A` +
@@ -461,3 +466,46 @@ function initScrollTop() {
     }
   });
 }
+
+/* ==========================================================================
+   9. RAKHI OFFER POPUP MODAL
+   ========================================================================== */
+function initRakhiPopup() {
+  const rakhiModal = document.getElementById('rakhiModal');
+  if (!rakhiModal) return;
+
+  // Show after 1.5 seconds delay if not already shown this session
+  if (!sessionStorage.getItem('rakhiPopupShown')) {
+    setTimeout(() => {
+      rakhiModal.classList.add('active');
+      sessionStorage.setItem('rakhiPopupShown', 'true');
+    }, 1500);
+  }
+}
+
+window.closeRakhiModal = function() {
+  const modal = document.getElementById('rakhiModal');
+  if (modal) modal.classList.remove('active');
+};
+
+window.switchRakhiLang = function(lang) {
+  const img = document.getElementById('rakhiImg');
+  const btn = document.getElementById('rakhiBtn');
+  const btnEn = document.getElementById('rakhiBtnEn');
+  const btnHi = document.getElementById('rakhiBtnHi');
+  if (!img || !btn || !btnEn || !btnHi) return;
+
+  if (lang === 'en') {
+    img.src = 'images/rakhi-offer-en.jpg';
+    btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Book Rakhi Offer on WhatsApp';
+    btn.href = 'https://wa.me/918875198384?text=Hi%20Jaipur%20Home%20Service,%20I%20want%20to%20avail%20the%20Raksha%20Bandhan%20Special%20Offer.';
+    btnEn.classList.add('active');
+    btnHi.classList.remove('active');
+  } else {
+    img.src = 'images/rakhi-offer-hi.jpg';
+    btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> WhatsApp पर बुक करें';
+    btn.href = 'https://wa.me/918875198384?text=Hi%20Jaipur%20Home%20Service,%20I%20want%20to%20avail%20the%20Rakhi%20Special%20Offer%20(Hindi).';
+    btnHi.classList.add('active');
+    btnEn.classList.remove('active');
+  }
+};
