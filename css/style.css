@@ -269,8 +269,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-logo-img {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
   border-radius: 50%;
   flex-shrink: 0;
@@ -283,29 +283,41 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  line-height: 1.15;
   min-width: 0;
 }
 
 .brand-name {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 800;
   color: var(--primary-navy);
-  line-height: 1.1;
+  letter-spacing: -0.01em;
   white-space: nowrap;
 }
 
-.brand-num {
-  color: #fb8500;
+.brand-badge-93 {
+  color: #ffffff;
+  background: linear-gradient(135deg, #ffb703 0%, #fb8500 100%);
+  font-size: 0.68rem;
   font-weight: 900;
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-left: 2px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .brand-tagline {
-  font-size: 0.62rem;
+  font-size: 0.60rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--gold-warm);
   white-space: nowrap;
+}
+
+.btn-text-short {
+  display: none;
 }
 
 .nav-menu {
@@ -1380,27 +1392,33 @@ h1, h2, h3, h4, h5, h6 {
 
   .navbar {
     padding: 6px 0;
-    gap: 6px;
+    gap: 4px;
   }
 
   .brand-logo {
     gap: 6px;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .brand-logo-img {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
   }
 
   .brand-name {
-    font-size: 0.82rem;
+    font-size: 0.72rem;
+    font-weight: 800;
     white-space: nowrap;
-    overflow: visible;
-    text-overflow: clip;
+  }
+
+  .brand-badge-93 {
+    font-size: 0.56rem;
+    padding: 1px 3px;
   }
 
   .brand-tagline {
-    font-size: 0.54rem;
+    font-size: 0.48rem;
     white-space: nowrap;
   }
 
@@ -1409,16 +1427,24 @@ h1, h2, h3, h4, h5, h6 {
     flex-shrink: 0;
   }
 
-  .navbar .btn-gold {
-    padding: 4px 8px;
-    font-size: 0.72rem;
-    gap: 3px;
+  .nav-book-btn {
+    padding: 4px 7px !important;
+    font-size: 0.68rem !important;
+    gap: 3px !important;
+  }
+
+  .btn-text-full {
+    display: none;
+  }
+
+  .btn-text-short {
+    display: inline;
   }
 
   .mobile-toggle {
     display: block;
     padding: 2px 4px;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
 
   .nav-phone-btn {

@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
    1. HERO SLIDESHOW (3-SECOND AUTO TRANSITION + ARROW NAVIGATION)
    ========================================================================== */
 const heroSlideServices = [
-  { tag: "01 / 07", title: "Home Deep Cleaning" },
+  { tag: "01 / 07", title: "Home Deep Clean" },
   { tag: "02 / 07", title: "Sofa & Carpet Spa" },
-  { tag: "03 / 07", title: "Stone Polish & Marble Rubbing" },
-  { tag: "04 / 07", title: "Bathroom Deep Cleaning" },
-  { tag: "05 / 07", title: "Kitchen Deep Degreasing" },
-  { tag: "06 / 07", title: "AC Service & Repairing" },
-  { tag: "07 / 07", title: "House Painting Service" }
+  { tag: "03 / 07", title: "Marble Rubbing" },
+  { tag: "04 / 07", title: "Bathroom Clean" },
+  { tag: "05 / 07", title: "Kitchen Degrease" },
+  { tag: "06 / 07", title: "AC Repair & Clean" },
+  { tag: "07 / 07", title: "House Painting" }
 ];
 
 let fullSlideIndex = 0;
