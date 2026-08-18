@@ -1,6 +1,6 @@
 /**
  * JAIPUR HOME SERVICE 93 - MASTER JAVASCRIPT ENGINE
- * Mobile-First, Unobstructed 3-Second Hero Slideshow & WhatsApp Dispatch
+ * Mobile-First, Slideshow Navigation Arrows, Authentic Before/After Slider & WhatsApp Dispatch
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. HERO SLIDESHOW (3-SECOND AUTO TRANSITION ENGINE)
+   1. HERO SLIDESHOW (3-SECOND AUTO TRANSITION + ARROW NAVIGATION)
    ========================================================================== */
 const heroSlideServices = [
   { tag: "01 / 07", title: "Home Deep Cleaning" },
@@ -30,72 +30,82 @@ let fullSlideIndex = 0;
 let fullSlideInterval = null;
 const FULL_SLIDE_DURATION = 3000;
 
-function initFullBleedHeroSlider() {
+function showSlide(index) {
   const slides = document.querySelectorAll('#heroFullSlider .hero-full-slide');
   const dots = document.querySelectorAll('#heroDots .dot-btn');
-  const prevBtn = document.getElementById('heroPrevBtn');
-  const nextBtn = document.getElementById('heroNextBtn');
   const serviceTag = document.getElementById('heroServiceTag');
   const serviceTitle = document.getElementById('heroServiceTitle');
-  const heroSection = document.getElementById('hero');
 
   if (!slides.length) return;
 
-  function showSlide(index) {
-    if (index >= slides.length) index = 0;
-    if (index < 0) index = slides.length - 1;
-    fullSlideIndex = index;
+  if (index >= slides.length) index = 0;
+  if (index < 0) index = slides.length - 1;
+  fullSlideIndex = index;
 
-    // Toggle active slide
-    slides.forEach((slide, idx) => {
-      slide.classList.toggle('active', idx === index);
-    });
+  slides.forEach((slide, idx) => {
+    slide.classList.toggle('active', idx === index);
+  });
 
-    // Update dots
-    dots.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx === index);
-      const progress = dot.querySelector('.dot-progress');
-      if (progress) {
-        progress.style.animation = 'none';
-        void progress.offsetWidth;
-        if (idx === index) {
-          progress.style.animation = `slideTimer ${FULL_SLIDE_DURATION}ms linear forwards`;
-        }
+  dots.forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === index);
+    const progress = dot.querySelector('.dot-progress');
+    if (progress) {
+      progress.style.animation = 'none';
+      void progress.offsetWidth;
+      if (idx === index) {
+        progress.style.animation = `slideTimer ${FULL_SLIDE_DURATION}ms linear forwards`;
       }
-    });
-
-    // Update service badge smoothly
-    if (serviceTag && serviceTitle && heroSlideServices[index]) {
-      serviceTag.textContent = heroSlideServices[index].tag;
-      serviceTitle.style.opacity = '0';
-
-      setTimeout(() => {
-        serviceTitle.textContent = heroSlideServices[index].title;
-        serviceTitle.style.transition = 'opacity 0.2s ease';
-        serviceTitle.style.opacity = '1';
-      }, 80);
     }
-  }
+  });
 
-  function nextSlide() {
-    showSlide(fullSlideIndex + 1);
-  }
+  if (serviceTag && serviceTitle && heroSlideServices[index]) {
+    serviceTag.textContent = heroSlideServices[index].tag;
+    serviceTitle.style.opacity = '0';
 
-  function prevSlide() {
-    showSlide(fullSlideIndex - 1);
+    setTimeout(() => {
+      serviceTitle.textContent = heroSlideServices[index].title;
+      serviceTitle.style.transition = 'opacity 0.2s ease';
+      serviceTitle.style.opacity = '1';
+    }, 80);
   }
+}
 
-  function startAutoPlay() {
-    stopAutoPlay();
-    fullSlideInterval = setInterval(nextSlide, FULL_SLIDE_DURATION);
-  }
+function nextSlide() {
+  showSlide(fullSlideIndex + 1);
+}
 
-  function stopAutoPlay() {
-    if (fullSlideInterval) {
-      clearInterval(fullSlideInterval);
-      fullSlideInterval = null;
-    }
+function prevSlide() {
+  showSlide(fullSlideIndex - 1);
+}
+
+function startAutoPlay() {
+  stopAutoPlay();
+  fullSlideInterval = setInterval(nextSlide, FULL_SLIDE_DURATION);
+}
+
+function stopAutoPlay() {
+  if (fullSlideInterval) {
+    clearInterval(fullSlideInterval);
+    fullSlideInterval = null;
   }
+}
+
+// Global functions for inline mini mobile arrow buttons
+window.triggerHeroPrev = function() {
+  prevSlide();
+  startAutoPlay();
+};
+
+window.triggerHeroNext = function() {
+  nextSlide();
+  startAutoPlay();
+};
+
+function initFullBleedHeroSlider() {
+  const prevBtn = document.getElementById('heroPrevBtn');
+  const nextBtn = document.getElementById('heroNextBtn');
+  const dots = document.querySelectorAll('#heroDots .dot-btn');
+  const heroSection = document.getElementById('hero');
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
@@ -220,7 +230,7 @@ function handleSectionQuickBooking(e) {
 }
 
 /* ==========================================================================
-   4. BEFORE & AFTER SLIDER
+   4. AUTHENTIC BEFORE & AFTER SLIDER
    ========================================================================== */
 const baData = {
   marble: {
@@ -228,12 +238,12 @@ const baData = {
     after: 'images/ba-marble-after.jpg'
   },
   sofa: {
-    before: 'images/service-sofa-clean.jpg',
-    after: 'images/hero-sofa-cleaning.jpg'
+    before: 'images/ba-sofa-before.jpg',
+    after: 'images/ba-sofa-after.jpg'
   },
   bathroom: {
-    before: 'images/service-bathroom-clean.jpg',
-    after: 'images/hero-bathroom-cleaning.jpg'
+    before: 'images/ba-bathroom-before.jpg',
+    after: 'images/ba-bathroom-after.jpg'
   }
 };
 
@@ -386,7 +396,7 @@ function toggleFaq(header) {
 }
 
 /* ==========================================================================
-   7. MODAL POPUP & ACTIONS
+   7. MODAL POPUP
    ========================================================================== */
 function openBookingModal(serviceName) {
   const modal = document.getElementById('bookingModal');

@@ -22,7 +22,7 @@
 <body>
 
   <!-- ==========================================================================
-       TOP ANNOUNCEMENT BAR
+       TOP ANNOUNCEMENT BAR (DESKTOP)
        ========================================================================== -->
   <div class="top-announcement-bar">
     <div class="container">
@@ -90,7 +90,7 @@
   </header>
 
   <!-- ==========================================================================
-       HERO SLIDESHOW WITH REAL PEOPLE / WORKERS (LOCAL SELF-HOSTED ASSETS)
+       HERO SLIDESHOW WITH ARROWS & COMPACT SLEEK CONTROLS ON MOBILE & DESKTOP
        ========================================================================== -->
   <section class="hero-fullbleed-section" id="hero">
     <!-- Full Width Slider Container -->
@@ -136,15 +136,32 @@
     <!-- Soft Bottom Gradient Overlay -->
     <div class="hero-full-overlay"></div>
 
+    <!-- Floating Arrow Buttons for Easy Slide Navigation -->
+    <button class="hero-floating-nav-btn hero-prev-nav" id="heroPrevBtn" aria-label="Previous Slide">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="hero-floating-nav-btn hero-next-nav" id="heroNextBtn" aria-label="Next Slide">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
     <!-- Minimal Sleek Floating Control Bar at Bottom -->
     <div class="hero-floating-bar-wrapper">
       <div class="container">
         <div class="hero-floating-dock">
           
-          <!-- Current Active Service Indicator -->
+          <!-- Current Active Service Indicator with Mini Mobile Controls -->
           <div class="hero-service-badge">
             <span class="service-tag-pill" id="heroServiceTag">01 / 07</span>
             <span class="service-title-text" id="heroServiceTitle">Home Deep Cleaning</span>
+            
+            <div class="hero-mobile-arrows">
+              <button class="hero-mini-arrow-btn" onclick="triggerHeroPrev()" aria-label="Previous Slide">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="hero-mini-arrow-btn" onclick="triggerHeroNext()" aria-label="Next Slide">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
           </div>
 
           <!-- Quick Action Buttons -->
@@ -157,7 +174,7 @@
             </a>
           </div>
 
-          <!-- 3-Second Slider Controls -->
+          <!-- Desktop 3-Second Slider Controls -->
           <div class="hero-slider-nav-controls">
             <div class="slider-pagination-dots" id="heroDots">
               <div class="dot-btn active" data-index="0"><div class="dot-progress"></div></div>
@@ -167,15 +184,6 @@
               <div class="dot-btn" data-index="4"><div class="dot-progress"></div></div>
               <div class="dot-btn" data-index="5"><div class="dot-progress"></div></div>
               <div class="dot-btn" data-index="6"><div class="dot-progress"></div></div>
-            </div>
-
-            <div class="slider-arrow-buttons">
-              <button class="slide-arrow-btn" id="heroPrevBtn" aria-label="Previous Slide">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-              <button class="slide-arrow-btn" id="heroNextBtn" aria-label="Next Slide">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
             </div>
           </div>
 
@@ -234,7 +242,7 @@
   </section>
 
   <!-- ==========================================================================
-       COMPREHENSIVE SERVICES SHOWCASE (ALL 7 CORE SERVICES)
+       COMPREHENSIVE SERVICES SHOWCASE (PRICING REMOVED)
        ========================================================================== -->
   <section class="services-section section-padding" id="services">
     <div class="container">
@@ -251,7 +259,6 @@
           <div class="service-img-wrap">
             <img src="images/service-home-clean.jpg" alt="Full Home Deep Cleaning Jaipur" class="service-img">
             <span class="service-badge"><i class="fa-solid fa-star"></i> Most Popular</span>
-            <span class="service-price-tag">From ₹1,499</span>
           </div>
           <div class="service-content">
             <h3 class="service-title">Full Home Deep Cleaning</h3>
@@ -273,7 +280,6 @@
           <div class="service-img-wrap">
             <img src="images/service-sofa-clean.jpg" alt="Sofa and Carpet Cleaning Jaipur" class="service-img">
             <span class="service-badge"><i class="fa-solid fa-shield-virus"></i> Fabric Spa</span>
-            <span class="service-price-tag">From ₹499</span>
           </div>
           <div class="service-content">
             <h3 class="service-title">Sofa & Carpet Cleaning</h3>
@@ -295,7 +301,6 @@
           <div class="service-img-wrap">
             <img src="images/service-bathroom-clean.jpg" alt="Bathroom Cleaning Jaipur" class="service-img">
             <span class="service-badge"><i class="fa-solid fa-droplet"></i> Anti-Hardwater</span>
-            <span class="service-price-tag">From ₹399</span>
           </div>
           <div class="service-content">
             <h3 class="service-title">Bathroom Deep Cleaning</h3>
@@ -317,7 +322,6 @@
           <div class="service-img-wrap">
             <img src="images/service-kitchen-clean.jpg" alt="Kitchen Deep Cleaning Jaipur" class="service-img">
             <span class="service-badge"><i class="fa-solid fa-fire-burner"></i> Heavy Degreasing</span>
-            <span class="service-price-tag">From ₹799</span>
           </div>
           <div class="service-content">
             <h3 class="service-title">Kitchen Deep Cleaning</h3>
@@ -339,7 +343,6 @@
           <div class="service-img-wrap">
             <img src="images/service-ac-repair.jpg" alt="AC Service and Repair Jaipur" class="service-img">
             <span class="service-badge"><i class="fa-solid fa-snowflake"></i> Jet Pump Wash</span>
-            <span class="service-price-tag">From ₹449</span>
           </div>
           <div class="service-content">
             <h3 class="service-title">AC Service & Repairing</h3>
@@ -361,7 +364,6 @@
           <div class="service-img-wrap">
             <img src="images/service-painting.jpg" alt="Painting Service Jaipur" class="service-img">
             <span class="service-badge"><i class="fa-solid fa-paint-roller"></i> Royale Finish</span>
-            <span class="service-price-tag">Best Market Rate</span>
           </div>
           <div class="service-content">
             <h3 class="service-title">Painting Service</h3>
@@ -383,7 +385,6 @@
           <div class="service-img-wrap">
             <img src="images/service-marble-polish.jpg" alt="Stone Polish and Marble Rubbing Jaipur" class="service-img">
             <span class="service-badge"><i class="fa-solid fa-gem"></i> Diamond Mirror Shine</span>
-            <span class="service-price-tag">From ₹12/sq.ft</span>
           </div>
           <div class="service-content">
             <h3 class="service-title">Stone Polish & Rubbing</h3>
@@ -531,7 +532,7 @@
   </section>
 
   <!-- ==========================================================================
-       BEFORE & AFTER INTERACTIVE TRANSFORMATION SLIDER
+       BEFORE & AFTER INTERACTIVE TRANSFORMATION SLIDER (AUTHENTIC RELEVANT IMAGES)
        ========================================================================== -->
   <section class="before-after-section section-padding" id="transformations">
     <div class="container">
@@ -550,13 +551,13 @@
 
         <div class="ba-container" id="baContainer">
           <!-- Before Layer (Background) -->
-          <img src="images/ba-marble-before.jpg" alt="Before Cleaning" class="ba-img ba-before" id="baBeforeImg">
-          <span class="ba-label ba-label-before">Before</span>
+          <img src="images/ba-marble-before.jpg" alt="Before Marble Polishing" class="ba-img ba-before" id="baBeforeImg">
+          <span class="ba-label ba-label-before">Before (Dull & Scratched)</span>
 
           <!-- After Layer (Clipped Foreground) -->
           <div class="ba-after" id="baAfterLayer">
-            <img src="images/ba-marble-after.jpg" alt="After Cleaning" id="baAfterImg">
-            <span class="ba-label ba-label-after">After (Miracle Finish)</span>
+            <img src="images/ba-marble-after.jpg" alt="After Marble Polishing" id="baAfterImg">
+            <span class="ba-label ba-label-after">After (Diamond Mirror Shine)</span>
           </div>
 
           <!-- Drag Handle -->
@@ -603,7 +604,7 @@
         <div class="feature-box">
           <div class="feature-box-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
           <h4>Fixed & Transparent Rates</h4>
-          <p>Zero hidden costs. What you see is what you pay. Transparent per-sqft and package pricing across Jaipur.</p>
+          <p>Zero hidden costs. What you see is what you pay. Transparent customized package pricing across Jaipur.</p>
         </div>
 
         <div class="feature-box">

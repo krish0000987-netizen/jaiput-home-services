@@ -1,6 +1,6 @@
 /* ==========================================================================
    JAIPUR HOME SERVICE 93 - LUXURY MOBILE-PERFECT STYLESHEET
-   100% Mobile Optimized, Zero Text Overflow, Ultra-Sleek Hero Section
+   100% Mobile Optimized, Zero Text Overflow, Visible Mobile Navigation Arrows
    ========================================================================== */
 
 /* --- Google Fonts Import --- */
@@ -194,7 +194,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   TOP BAR & HEADER (PERFECT MOBILE HEADER)
+   TOP BAR & HEADER
    ========================================================================== */
 .top-announcement-bar {
   background: #050c1b;
@@ -347,7 +347,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   HERO SECTION & ULTRA-SLEEK COMPACT FLOATING DOCK
+   HERO SECTION & VISIBLE SLIDESHOW ARROWS
    ========================================================================== */
 .hero-fullbleed-section {
   position: relative;
@@ -391,7 +391,15 @@ h1, h2, h3, h4, h5, h6 {
   object-position: center;
 }
 
-/* Subtle Vignette */
+.img-pos-center {
+  object-position: center center !important;
+}
+
+.img-pos-top {
+  object-position: center 20% !important;
+}
+
+/* Subtle Gradient Overlay */
 .hero-full-overlay {
   position: absolute;
   inset: 0;
@@ -405,10 +413,45 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
+/* Floating Navigation Arrows on Left and Right */
+.hero-floating-nav-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(9, 21, 43, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero-floating-nav-btn:hover {
+  background: var(--gold-gradient);
+  color: var(--primary-dark);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.hero-prev-nav {
+  left: 16px;
+}
+
+.hero-next-nav {
+  right: 16px;
+}
+
 /* Sleek Bottom Floating Bar */
 .hero-floating-bar-wrapper {
   position: relative;
-  z-index: 10;
+  z-index: 15;
   width: 100%;
   padding-bottom: 16px;
 }
@@ -456,6 +499,24 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+}
+
+.hero-mobile-arrows {
+  display: none;
+  gap: 4px;
+}
+
+.hero-mini-arrow-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
 }
 
 .hero-dock-actions {
@@ -511,24 +572,6 @@ h1, h2, h3, h4, h5, h6 {
   100% { width: 100%; }
 }
 
-.slider-arrow-buttons {
-  display: flex;
-  gap: 4px;
-}
-
-.slide-arrow-btn {
-  width: 28px;
-  height: 28px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 50%;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-}
-
 /* ==========================================================================
    STATS STRIP SECTION
    ========================================================================== */
@@ -579,7 +622,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   SERVICES SHOWCASE
+   SERVICES SHOWCASE (PRICING REMOVED)
    ========================================================================== */
 .services-section {
   background-color: var(--bg-light);
@@ -622,18 +665,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.72rem;
   font-weight: 700;
   padding: 3px 8px;
-  border-radius: var(--radius-full);
-}
-
-.service-price-tag {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: var(--gold-gradient);
-  color: var(--primary-dark);
-  font-size: 0.8rem;
-  font-weight: 800;
-  padding: 4px 10px;
   border-radius: var(--radius-full);
 }
 
@@ -1339,12 +1370,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   SPECIALIZED MOBILE MEDIA QUERIES (ZERO OVERFLOW, COMPACT LUXURY)
+   MOBILE RESPONSIVENESS WITH VISIBLE ARROWS
    ========================================================================== */
 @media (max-width: 768px) {
-  /* Header Mobile Optimization */
   .top-announcement-bar {
-    display: none; /* Hide topbar on mobile for ultra-clean header */
+    display: none;
   }
 
   .navbar {
@@ -1404,6 +1434,22 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 460px;
   }
 
+  /* Keep Left/Right Floating Arrows on Mobile */
+  .hero-floating-nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    top: 40%;
+  }
+
+  .hero-prev-nav {
+    left: 8px;
+  }
+
+  .hero-next-nav {
+    right: 8px;
+  }
+
   .hero-floating-bar-wrapper {
     padding-bottom: 10px;
     padding-left: 10px;
@@ -1420,7 +1466,6 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
   }
 
-  /* Top Row of Dock: Tag + Title + Arrow Controls */
   .hero-service-badge {
     width: 100%;
     display: flex;
@@ -1445,7 +1490,12 @@ h1, h2, h3, h4, h5, h6 {
     text-align: left;
   }
 
-  /* Bottom Row of Dock: Compact Side-by-side action buttons */
+  .hero-mobile-arrows {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
   .hero-dock-actions {
     width: 100%;
     display: grid;
@@ -1461,7 +1511,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-slider-nav-controls {
-    display: none; /* Controls embedded directly in badge */
+    display: none;
   }
 
   /* Other mobile adjustments */
