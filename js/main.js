@@ -230,7 +230,7 @@ function handleSectionQuickBooking(e) {
 }
 
 /* ==========================================================================
-   4. AUTHENTIC BEFORE & AFTER SLIDER
+   4. AUTHENTIC BEFORE & AFTER CLIP-PATH SLIDER
    ========================================================================== */
 const baData = {
   marble: {
@@ -249,31 +249,27 @@ const baData = {
 
 function initBeforeAfterSlider() {
   const container = document.getElementById('baContainer');
-  const afterLayer = document.getElementById('baAfterLayer');
-  const handle = document.getElementById('baHandle');
-
-  if (!container || !afterLayer || !handle) return;
+  if (!container) return;
 
   let isDragging = false;
 
-  function setPosition(xPos) {
+  function updatePosition(clientX) {
     const rect = container.getBoundingClientRect();
-    let x = xPos - rect.left;
+    let x = clientX - rect.left;
     if (x < 0) x = 0;
     if (x > rect.width) x = rect.width;
-    const percent = (x / rect.width) * 100;
-    afterLayer.style.width = `${percent}%`;
-    handle.style.left = `${percent}%`;
+    const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    container.style.setProperty('--ba-pos', `${percent}%`);
   }
 
   container.addEventListener('mousedown', (e) => {
     isDragging = true;
-    setPosition(e.clientX);
+    updatePosition(e.clientX);
   });
 
   window.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
-    setPosition(e.clientX);
+    updatePosition(e.clientX);
   });
 
   window.addEventListener('mouseup', () => {
@@ -282,17 +278,20 @@ function initBeforeAfterSlider() {
 
   container.addEventListener('touchstart', (e) => {
     isDragging = true;
-    setPosition(e.touches[0].clientX);
+    updatePosition(e.touches[0].clientX);
   }, { passive: true });
 
   window.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
-    setPosition(e.touches[0].clientX);
+    updatePosition(e.touches[0].clientX);
   }, { passive: true });
 
   window.addEventListener('touchend', () => {
     isDragging = false;
   });
+
+  // Set initial position
+  container.style.setProperty('--ba-pos', '50%');
 }
 
 function switchBATab(key) {
@@ -301,6 +300,7 @@ function switchBATab(key) {
 
   const beforeImg = document.getElementById('baBeforeImg');
   const afterImg = document.getElementById('baAfterImg');
+  const container = document.getElementById('baContainer');
   const tabs = document.querySelectorAll('.ba-tab-btn');
 
   tabs.forEach(tab => {
@@ -314,6 +314,9 @@ function switchBATab(key) {
   if (beforeImg && afterImg) {
     beforeImg.src = data.before;
     afterImg.src = data.after;
+    if (container) {
+      container.style.setProperty('--ba-pos', '50%');
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 /* ==========================================================================
    JAIPUR HOME SERVICE 93 - LUXURY MOBILE-PERFECT STYLESHEET
-   100% Mobile Optimized, Zero Text Overflow, Visible Mobile Navigation Arrows
+   100% Mobile Optimized, Zero Text Overflow, Bulletproof Clip-Path B&A Engine
    ========================================================================== */
 
 /* --- Google Fonts Import --- */
@@ -399,7 +399,6 @@ h1, h2, h3, h4, h5, h6 {
   object-position: center 20% !important;
 }
 
-/* Subtle Gradient Overlay */
 .hero-full-overlay {
   position: absolute;
   inset: 0;
@@ -413,7 +412,6 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
-/* Floating Navigation Arrows on Left and Right */
 .hero-floating-nav-btn {
   position: absolute;
   top: 45%;
@@ -448,7 +446,6 @@ h1, h2, h3, h4, h5, h6 {
   right: 16px;
 }
 
-/* Sleek Bottom Floating Bar */
 .hero-floating-bar-wrapper {
   position: relative;
   z-index: 15;
@@ -622,7 +619,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   SERVICES SHOWCASE (PRICING REMOVED)
+   SERVICES SHOWCASE
    ========================================================================== */
 .services-section {
   background-color: var(--bg-light);
@@ -854,7 +851,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   BEFORE & AFTER COMPARISON SLIDER
+   BEFORE & AFTER COMPARISON SLIDER (BULLETPROOF CLIP-PATH ENGINE)
    ========================================================================== */
 .before-after-section {
   background: #ffffff;
@@ -895,44 +892,41 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   box-shadow: var(--shadow-md);
   user-select: none;
+  touch-action: pan-y;
+  --ba-pos: 50%;
 }
 
-.ba-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.ba-before {
-  z-index: 1;
-}
-
-.ba-after {
-  z-index: 2;
-  width: 50%;
-  overflow: hidden;
-}
-
-.ba-after img {
+.ba-image {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
   height: 100%;
-  max-width: none;
+  object-fit: cover;
+  display: block;
+}
+
+.ba-before-img {
+  z-index: 1;
+}
+
+.ba-after-img {
+  z-index: 2;
+  clip-path: polygon(0 0, var(--ba-pos, 50%) 0, var(--ba-pos, 50%) 100%, 0 100%);
+  -webkit-clip-path: polygon(0 0, var(--ba-pos, 50%) 0, var(--ba-pos, 50%) 100%, 0 100%);
 }
 
 .ba-handle {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 50%;
+  left: var(--ba-pos, 50%);
   width: 3px;
   background: #ffffff;
   z-index: 10;
   cursor: ew-resize;
   transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
 }
 
 .ba-handle-btn {
@@ -940,8 +934,8 @@ h1, h2, h3, h4, h5, h6 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   background: var(--gold-gradient);
   border: 2px solid #ffffff;
   border-radius: 50%;
@@ -950,24 +944,26 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   color: var(--primary-dark);
   font-size: 0.85rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .ba-label {
   position: absolute;
   top: 12px;
-  padding: 3px 10px;
+  padding: 4px 10px;
   background: rgba(0, 0, 0, 0.7);
   color: #ffffff;
   font-size: 0.72rem;
   font-weight: 700;
   border-radius: var(--radius-full);
-  z-index: 5;
+  z-index: 6;
   text-transform: uppercase;
+  pointer-events: none;
 }
 
 .ba-label-before {
   right: 12px;
-  background: rgba(220, 38, 38, 0.85);
+  background: rgba(220, 38, 38, 0.9);
 }
 
 .ba-label-after {
@@ -1370,7 +1366,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   MOBILE RESPONSIVENESS WITH VISIBLE ARROWS
+   MOBILE RESPONSIVENESS
    ========================================================================== */
 @media (max-width: 768px) {
   .top-announcement-bar {
@@ -1434,7 +1430,6 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 460px;
   }
 
-  /* Keep Left/Right Floating Arrows on Mobile */
   .hero-floating-nav-btn {
     width: 36px;
     height: 36px;
